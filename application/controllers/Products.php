@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Products extends CI_Controller {
+class Products extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -19,7 +20,8 @@ class Products extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	public function __construct() {        
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('product');
 	}
@@ -28,10 +30,24 @@ class Products extends CI_Controller {
 	public function index()
 	{
 
-		$data= [
+		$data = [
 			'products' => $this->product->get_all()
 		];
 
 		$this->load->view('list_products', $data);
+	}
+
+	public function create()
+	{
+		$name = $this->input->post('name');
+		$price = $this->input->post('price');
+
+		$data = [
+			'name'  => $name,
+			'price' => $price
+		];
+
+		$this->product->inputData($data, 'products');
+		redirect('products/index');
 	}
 }

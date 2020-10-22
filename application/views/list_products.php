@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <title>List Product Store</title>
 
@@ -18,8 +17,12 @@
     <div class="container mt-3">
         <div class="row justify-content-center mt-3">
 
-            <div class="col-xl-12">
-                <h1 class="text-center">List Product Store</h1>
+            <div class="col-xl-8 mb-3 text-center">
+                <h1 class="">List Product Store</h1>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                    Tambah Data Barang
+                </button>
             </div>
             <div class="col-xl-6">
                 <table class="table table-hover table-dark">
@@ -33,9 +36,9 @@
                     <tbody>
                         <? $i = 1; foreach ($products as $item) : ?>
                         <tr>
-                            <th scope="row"><?= $i++ ;?></th>
-                            <td><?= $item['name'];?></td>
-                            <td><?= $item['price'];?></td>
+                            <th scope="row"><?= $i++; ?></th>
+                            <td><?= $item['name']; ?></td>
+                            <td><?= $item['price']; ?></td>
                         </tr>
                         <? endforeach;?>
                     </tbody>
@@ -47,14 +50,42 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Barang</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="<?= base_url().'products/create'; ?>">
+                        <div class="form-group">
+                            <label for="nama">Nama Barang</label>
+                            <input type="text" class="form-control" id="nama" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Harga Barang</label>
+                            <input type="text" class="form-control" id="price" name="price">
+                            <small class="form-text text-muted">Harga Tidak menggunakan komma/titik</small>
+
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tambah Barang</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
 
     <!-- Option 2: jQuery, Popper.js, and Bootstrap JS

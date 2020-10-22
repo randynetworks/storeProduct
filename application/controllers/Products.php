@@ -48,6 +48,12 @@ class Products extends CI_Controller
 		];
 
 		$this->product->inputData($data, 'products');
-		redirect('products/index');
+		redirect('products');
 	}
+
+	public function delete($id)
+    {
+        $this->product->deleteData($id, 'products');
+        redirect('products');
+    }
 }

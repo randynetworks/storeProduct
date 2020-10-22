@@ -31,6 +31,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Nama Barang</th>
                             <th scope="col">Harga</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,6 +40,10 @@
                             <th scope="row"><?= $i++; ?></th>
                             <td><?= $item['name']; ?></td>
                             <td><?= $item['price']; ?></td>
+                            <td>
+                                <a href="" class="badge badge-primary">Edit</a>
+                                <a href="<?= base_url(); ?>products/delete/<?= $item['id']; ?>" class="badge badge-danger">hapus</a>
+                            </td>
                         </tr>
                         <? endforeach;?>
                     </tbody>
@@ -61,15 +66,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="<?= base_url().'products/create'; ?>">
+                    <form method="POST" action="<?= base_url() . 'products/create'; ?>">
                         <div class="form-group">
                             <label for="nama">Nama Barang</label>
                             <input type="text" class="form-control" id="nama" name="name">
+                            <small class="form-text text-danger"><?= form_error('name'); ?></small>
                         </div>
                         <div class="form-group">
                             <label for="price">Harga Barang</label>
                             <input type="text" class="form-control" id="price" name="price">
                             <small class="form-text text-muted">Harga Tidak menggunakan komma/titik</small>
+                            <small class="form-text text-danger"><?= form_error('price'); ?></small>
 
                         </div>
                         <button type="submit" class="btn btn-primary">Tambah Barang</button>
